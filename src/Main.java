@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Main {
 
@@ -28,5 +29,31 @@ public class Main {
         c) stworzyć dowolny przykład z 2 lub 3 blokami catch i z blokiem finally,
          */
 
+        int[] tab1 = {1, 2, 3, 4, 5, 6};
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Podaj numer indeksu od 1 do 6: ");
+        int liczba = scan.nextInt();
+
+        if (liczba > 5 || liczba < 0)
+        {
+            try {
+                System.out.println(tab1[liczba]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Błąd! Podałeś index: " + liczba + ", dozwolone są tylko liczby od 1 do " + (tab1.length));
+            }
+        }
+
+        try {
+            liczba = Integer.parseInt(scan.next());
+        } catch (NumberFormatException e) {
+            System.out.println("Błąd, wprowadzony znak nie jest cyfrą!");
+            throw e;
+        }
+
+        finally {
+            System.out.println("!!! KONIEC PROGRAMU !!!");
+        }
     }
 }
